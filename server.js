@@ -1,8 +1,11 @@
 import express from "express";
+import postsRouter from "./routers/posts.js"
 
 const app = express();
 
 app.use(express.static('public'));
+
+app.use('/posts', postsRouter);
 
 const posts = [
     {
@@ -36,15 +39,6 @@ const posts = [
         tags: ["Express", "Frontend", "StaticFiles"]
     }
 ];
-
-// Main root
-app.get('/', (request, response) => {
-    response
-        .type('html')
-        .send(`
-                <h1>Il mio fichissimo blog</h1>
-            `)
-});
 
 // Bacheca
 app.get('/bacheca', (request, response) => {
