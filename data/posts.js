@@ -1,4 +1,4 @@
-const posts = [
+export const posts = [
   {
     id: 1,
     title: "Ciambellone",
@@ -63,5 +63,3 @@ const posts = [
     created_at: "2024-05-22T11:00:00.000Z",
   },
 ];
-
-module.exports = posts;

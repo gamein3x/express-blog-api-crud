@@ -1,5 +1,7 @@
 import express from "express";
-import postsRouter from "./routers/posts.js"
+import postsRouter from "./routers/posts.js";
+import { posts } from "./data/posts.js";
+
 
 const app = express();
 
@@ -9,9 +11,14 @@ app.use('/posts', postsRouter);
 
 // Bacheca
 app.get('/bacheca', (request, response) => {
-    response.json(posts);
+    response.json({
+        message: "Bacheca",
+        content: posts
+    });
 });
 
+
+/*
 // Blog
 
 app.get('/blog', (request, response) => {
@@ -33,6 +40,7 @@ app.get('/blog', (request, response) => {
     }).join(''); // .join('') unisce l'array di stringhe in un unico grande testo HTML
     response.send(cardPost);
 });
+*/
 
 // Listen
 app.listen(6969, (error) => {
