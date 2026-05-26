@@ -3,6 +3,19 @@ import { posts } from "../data/posts.js";
 // INDEX
 
 function index(request, response) {
+
+    // Filtro 1: per tag (es. /posts?tag=node)
+    if (request.query.tag) {
+        filteredPosts = filteredPosts.filter(post => post.tags.includes(request.query.tag));
+    }
+
+    // Filtro 2: per titolo (es. /posts?title=routing)
+    if (request.query.title) {
+        filteredPosts = filteredPosts.filter(post => 
+            post.title.toLowerCase().includes(request.query.title.toLowerCase())
+        );
+    }
+
     response
         .status(200)
         .json({
@@ -36,8 +49,8 @@ function create(request, response) {
 
 function destroy(request, response) {
     response
-        .status(200)
-        .json({ messaggio: "ciauz" });
+        .status(204)
+        .json({ messaggio: "Post eliminato" });
 }
 
 export { index, show, create, destroy };
